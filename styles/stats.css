@@ -1,0 +1,76 @@
+#stats {
+    margin: auto;
+    height: 40vh;
+
+    border-radius: 30px;
+    max-width: fit-content;
+
+    transition-duration: 0.5s;
+    margin-top: 20px;
+    overflow-y: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+#stats * {
+    transition-duration: 0.5s;
+}
+
+#stats .title {
+    text-align: center;
+    width: calc(100% - 100px);
+    background-color: rgb(180, 180, 180);
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    margin: auto;
+    font-size: 30px;
+}
+
+#stats .graphcontainer {
+    background-color: rgb(160,160,160);
+    border-radius: 30px;
+    flex-grow: 1;
+}
+
+#stats .graph {
+
+
+    width: 95%;
+    height: 100%;
+    margin-top: 10px;
+    display: flex;
+
+    margin: auto;
+}
+
+#stats .column {
+    height: 95%;
+    width: 75px;
+    flex-grow: 1;
+    margin-inline: 3px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+#stats .visual {
+    flex-grow: 1;
+    display: flex;
+}
+
+#stats .bar {
+    background-color: rgb(0, 145, 0);
+    align-self:flex-end;
+    flex-grow: 1;
+    border-radius: 10px;
+    transition-delay: 0.25s;
+    box-shadow: 5px 5px 0px 0px rgba(0,0,0,0.3);
+}
+
+#stats .label {
+    text-align: center;
+    height: fit-content;
+    margin-top: 5px;
+    font-family: monospace;
+    font-size: 20px;
+}

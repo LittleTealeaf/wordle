@@ -1,0 +1,30 @@
+body {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+#title {
+    margin: auto;
+    height: 50px;
+
+    width: fit-content;
+    text-align: center;
+}
+
+#game {
+    width: 100%;
+    height: calc(100vh - 60px)
+}
+
+
+
+
+*[data-hide] {
+    height: 0px !important;
+}
+
+*[data-hide] * {
+    height: 0px !important;
+    font-size: 0px !important;
+}
