@@ -4,6 +4,8 @@
 /// <reference path="stats.js" />
 /// <reference path="game.js" />
 
+let WORDS;
+
 const CHAR_BACKSPACE = '←';
 const CHAR_ENTER = '✓'
 
@@ -22,6 +24,11 @@ keyboard.setKeyPress(keyboardInput);
 
 document.onkeydown = (event) => keyboardInput(event.key);
 
-fetchWords().then(choose).then((word) => {
-    game = new Game(word);
-})
+// fetchWords().then(choose).then((word) => {
+//     game = new Game(word);
+// })
+
+fetchWords().then(words => {
+    WORDS = words;
+    return words;
+}).then(choose).then(word => game = new Game(word));

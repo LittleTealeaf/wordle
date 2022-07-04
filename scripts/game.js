@@ -9,14 +9,21 @@ class Game {
 
         this.guesses = [];
         this.current = new Guess(this.element);
-        INACTIVE(this.current.element);
-        this.current = new Guess(this.element);
     }
 
     keyinput(key) {
         if(key == CHAR_BACKSPACE || key == 'backspace') {
             this.current.backspace();
         } else if(key == CHAR_ENTER || key == 'enter') {
+
+            if(this.current.enter()) {
+                if(this.current.update(this.word)) {
+                    console.log("WIN");
+                } else {
+                    this.guesses.push(this.current = new Guess(this.element));
+                }
+            }
+
 
         } else if("abcdefghijklmnopqrstuvwxyz".includes(key)){
             this.current.type(key);
@@ -66,6 +73,28 @@ class Guess {
             STATE_BLANK(this.letters[this.index]);
             this.letters[this.index].innerHTML = ' ';
         }
+    }
+
+    enter() {
+        if(this.index == 5) {
+            const word = this.letters.map((i) => i.innerHTML).join("");
+
+            if(!WORDS.includes(word)) {
+                SET_INVALID(this.element);
+                setTimeout(() => REMOVE_INVALID(this.element),100);
+                return false;
+            }
+
+            INACTIVE(this.element);
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    update(word) {
+
+        return false;
     }
 
 

@@ -13,12 +13,18 @@
     margin: auto;
     max-height: 70px;
     display: flex;
+    margin-top: 0px;
 }
 
 #board .row[data-active] {
-    margin-top: 10px;
+    margin-top: 20px;
 }
 
 #board .row[data-active] .cell {
     margin-inline: 10px;
+}
+
+#board .row[data-invalid] .cell {
+    background-color: red;
+    width: 70px;
 }

@@ -18,3 +18,6 @@ const INACTIVE = createData("active",null);
 
 const HIDE = createData('hide','');
 const SHOW = createData('hide',null);
+
+const SET_INVALID = createData('invalid','');
+const REMOVE_INVALID = createData('invalid',null);
