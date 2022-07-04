@@ -2,11 +2,17 @@ class Stats {
     constructor() {
         this.element = document.getElementById("stats");
         this.graph = this.element.getElementsByClassName("graph").item(0);
+        this.hidenodata = false;
+        this.update([]);
     }
 
     update(data) {
         if(data.length == 0) {
+            this.hide();
+            this.hidenodata = true;
             return;
+        } else if(this.hidenodata) {
+            this.show();
         }
 
         this.graph.innerHTML = "";
@@ -30,8 +36,6 @@ class Stats {
                 range = i;
             }
         });
-
-        console.log(values);
 
         for(var i = 1; i <= range; i++) {
 

@@ -4,11 +4,24 @@
 /// <reference path="stats.js" />
 /// <reference path="game.js" />
 
+const CHAR_BACKSPACE = '←';
+const CHAR_ENTER = '✓'
+
 const keyboard = new Keyboard();
 const stats = new Stats();
 
-const board = document.getElementById("board");
+var game;
+
+function keyboardInput(key) {
+    game.keyinput(key.toLowerCase());
+
+}
+
+keyboard.setKeyPress(keyboardInput);
 
 
-stats.update([1,2,3,2,3,5,4,3,4,6,2,2,4,5,6,6,3,6,8,6]);
-stats.show();
+document.onkeydown = (event) => keyboardInput(event.key);
+
+fetchWords().then(choose).then((word) => {
+    game = new Game(word);
+})

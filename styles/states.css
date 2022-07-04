@@ -1,0 +1,19 @@
+*[data-state='blank'] {
+    background-color: #e9f0f0;
+}
+
+*[data-state='unknown'] {
+    background-color: #ced0d3;
+}
+
+*[data-state='wrong'] {
+    background-color: #868686;
+}
+
+*[data-state='partial'] {
+    background-color: #fcfc00;
+}
+
+*[data-state='correct'] {
+    background-color: #00a100;
+}

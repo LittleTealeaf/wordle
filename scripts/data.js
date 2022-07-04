@@ -6,10 +6,14 @@ const createData = (key, value) => {
     }
 }
 
+const STATE_BLANK = createData('state','blank');
 const STATE_UNKNOWN = createData('state','unknown');
 const STATE_WRONG = createData('state','wrong');
 const STATE_PARTIAL = createData('state','partial');
 const STATE_CORRECT = createData('state','correct');
+
+const ACTIVE = createData("active","");
+const INACTIVE = createData("active",null);
 
 
 const HIDE = createData('hide','');
