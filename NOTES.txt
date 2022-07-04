@@ -1,0 +1,3 @@
+TODO:
+
+Make the display such that the "board" is a scrollable interface, the "keyboard" is on the bottom and it displays in a flex that takes up the screenspace
