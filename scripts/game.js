@@ -17,7 +17,7 @@ class Game {
         } else if(key == CHAR_ENTER || key == 'enter') {
 
             if(this.current.enter()) {
-                if(this.current.update(this.word)) {
+                if(this.current.check(this.word,keyboard)) {
                     console.log("WIN");
                 } else {
                     this.guesses.push(this.current = new Guess(this.element));
@@ -92,7 +92,37 @@ class Guess {
         }
     }
 
-    update(word) {
+    check(word,keyboard) {
+        const pool = [...word];
+        this.letters.forEach((node,i) => {
+            if(word[i] == node.innerHTML) {
+                STATE_CORRECT(node);
+                removeItemOnce(pool,word[i]);
+                STATE_CORRECT(keyboard.keys[node.innerHTML]);
+            }
+        });
+
+        if(pool.length == 0) {
+            return true;
+        }
+
+        this.letters.forEach((node) => {
+            if(node.dataset.state != 'correct') {
+                if(pool.includes(node.innerHTML)) {
+                    removeItemOnce(pool,node.innerHTML);
+                    STATE_PARTIAL(node);
+                    if(keyboard.keys[node.innerHTML].dataset.state != 'correct') {
+                        STATE_PARTIAL(keyboard.keys[node.innerHTML]);
+                    }
+                } else {
+                    STATE_WRONG(node);
+                    if(keyboard.keys[node.innerHTML].dataset.state == 'unknown') {
+                        STATE_WRONG(keyboard.keys[node.innerHTML]);
+                    }
+                }
+            }
+        })
+
 
         return false;
     }
