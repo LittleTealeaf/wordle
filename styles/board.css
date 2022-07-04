@@ -11,7 +11,7 @@
 
 #board .row {
     margin: auto;
-    max-height: 70px;
+    height: 70px;
     display: flex;
     margin-top: 0px;
 }

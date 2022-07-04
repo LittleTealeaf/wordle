@@ -9,6 +9,7 @@ class Game {
 
         this.guesses = [];
         this.current = new Guess(this.element);
+        this.guesses.push(this.current);
     }
 
     keyinput(key) {
@@ -17,8 +18,18 @@ class Game {
         } else if(key == CHAR_ENTER || key == 'enter') {
 
             if(this.current.enter()) {
-                if(this.current.check(this.word,keyboard)) {
+                if(this.current.check(this.word)) {
                     console.log("WIN");
+                    HIDE(keyboard.element);
+                    this.guesses.forEach((guess) => {
+                        if(guess != this.current) {
+                            HIDE(guess.element);
+                        }
+                    })
+                    games.push(this.guesses.length);
+                    setCookie('games',games);
+                    stats.update(games);
+                    stats.show();
                 } else {
                     this.guesses.push(this.current = new Guess(this.element));
                 }
@@ -92,7 +103,7 @@ class Guess {
         }
     }
 
-    check(word,keyboard) {
+    check(word) {
         const pool = [...word];
         this.letters.forEach((node,i) => {
             if(word[i] == node.innerHTML) {

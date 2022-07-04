@@ -12,6 +12,8 @@ const CHAR_ENTER = '✓'
 const keyboard = new Keyboard();
 const stats = new Stats();
 
+const games = getCookie('games') || [];
+
 var game;
 
 function keyboardInput(key) {
