@@ -26,9 +26,6 @@ keyboard.setKeyPress(keyboardInput);
 
 document.onkeydown = (event) => keyboardInput(event.key);
 
-// fetchWords().then(choose).then((word) => {
-//     game = new Game(word);
-// })
 
 fetchWords().then(words => {
     WORDS = words;

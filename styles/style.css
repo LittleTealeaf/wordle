@@ -16,18 +16,6 @@ body {
     height: calc(100vh - 60px)
 }
 
-#footer {
-    position: absolute;
-    bottom: 50px;
-    width: 100%;
-    left: 0;
-}
-
-#footer-space {
-    height: 165px;
-}
-
-
 
 
 *[data-hide] {

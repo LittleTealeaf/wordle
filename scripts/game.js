@@ -4,6 +4,8 @@ class Game {
     constructor(word) {
         console.log(word);
 
+        this.won = false;
+
         this.element = document.getElementById("board");
         this.word = word;
 
@@ -13,31 +15,34 @@ class Game {
     }
 
     keyinput(key) {
-        if(key == CHAR_BACKSPACE || key == 'backspace') {
-            this.current.backspace();
-        } else if(key == CHAR_ENTER || key == 'enter') {
+        if(!this.won) {
+            if(key == CHAR_BACKSPACE || key == 'backspace') {
+                this.current.backspace();
+            } else if(key == CHAR_ENTER || key == 'enter') {
 
-            if(this.current.enter()) {
-                if(this.current.check(this.word)) {
-                    console.log("WIN");
-                    HIDE(keyboard.element);
-                    this.guesses.forEach((guess) => {
-                        if(guess != this.current) {
-                            HIDE(guess.element);
-                        }
-                    })
-                    games.push(this.guesses.length);
-                    setCookie('games',games);
-                    stats.update(games);
-                    stats.show();
-                } else {
-                    this.guesses.push(this.current = new Guess(this.element));
+                if(this.current.enter()) {
+                    if(this.current.check(this.word)) {
+                        console.log("WIN");
+                        HIDE(keyboard.element);
+                        this.guesses.forEach((guess) => {
+                            if(guess != this.current) {
+                                HIDE(guess.element);
+                            }
+                        })
+                        games.push(this.guesses.length);
+                        setCookie('games',games);
+                        stats.update(games);
+                        stats.show();
+                        this.won = true;
+                    } else {
+                        this.guesses.push(this.current = new Guess(this.element));
+                    }
                 }
+
+
+            } else if("abcdefghijklmnopqrstuvwxyz".includes(key)){
+                this.current.type(key);
             }
-
-
-        } else if("abcdefghijklmnopqrstuvwxyz".includes(key)){
-            this.current.type(key);
         }
     }
 }
